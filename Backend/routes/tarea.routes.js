@@ -7,7 +7,7 @@ module.exports = app => {
     router.post("/", tareas.create);
 
     // Obtener todas las tareas con filtros opcionales
-    router.get("/", tareas.findAll);  // Ruta para obtener todas las tareas con filtros opcionales
+    router.get("/", tareas.findAll);  
 
     // Obtener una tarea por ID
     router.get("/:id", tareas.findOne);

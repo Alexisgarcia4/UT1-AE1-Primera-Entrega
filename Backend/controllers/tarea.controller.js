@@ -39,43 +39,43 @@ exports.findOne = (req, res) => {
 
 // Obtener todas las tareas con filtros opcionales (prioridad, hecha, orden)
 exports.findAll = async (req, res) => {
-    const { prioridad, hecha, orden } = req.query;  // Leer los parámetros de consulta
+    const { prioridad, hecha, orden } = req.query;  
 
     try {
-        // Condiciones de búsqueda
-        const condiciones = {};  // Dejamos un objeto vacío para agregar filtros condicionales
+        
+        const condiciones = {};  
 
-        // Filtrar por prioridad si está presente
+       
         if (prioridad && prioridad.trim() !== '') {
             condiciones.prioridad = prioridad;
         }
 
-        // Filtrar por estado de completada si está presente
+        
         if (hecha && hecha.trim() !== '') {
-            condiciones.hecha = (hecha === 'true');  // Convertir el string a booleano
+            condiciones.hecha = (hecha === 'true');  
         }
 
-        // Definir el orden de los resultados
-        let ordenFecha = [['createdAt', 'ASC']];  // Por defecto, orden ascendente por fecha
+       
+        let ordenFecha = [['createdAt', 'ASC']];  
 
-        // Cambiar a descendente si el parámetro `orden` lo indica
+        
         if (orden && orden.trim() !== '' && orden.toLowerCase() === 'desc') {
             ordenFecha = [['createdAt', 'DESC']];
         }
 
-        // Buscar todas las tareas que coincidan con los filtros
+        
         const tareas = await Tarea.findAll({
-            where: condiciones,   // Aplicar las condiciones de filtrado
-            order: ordenFecha     // Aplicar el orden
+            where: condiciones,   
+            order: ordenFecha    
         });
 
-        // Devolver los resultados
+        
         if (tareas.length > 0) {
             res.status(200).send(tareas);
         } else {
             res.status(200).send({
                 message: 'No se encontraron tareas.',
-                data: []  // Devolver un array vacío si no hay tareas
+                data: []  
             });
         }
     } catch (err) {

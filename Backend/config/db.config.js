@@ -1,5 +1,3 @@
-//db.congig.js
-
 module.exports = {
     HOST: "localhost",
     USER: "root",

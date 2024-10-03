@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 });
 
 // Importar las rutas de Tareas
-require('./routes/tarea.routes')(app);    // Cargar las rutas para el manejo de tareas
+require('./routes/tarea.routes')(app);    
 
 // Iniciar el servidor
 app.listen(PORT, () => {

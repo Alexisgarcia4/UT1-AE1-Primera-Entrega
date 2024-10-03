@@ -21,13 +21,13 @@ import axios from "axios";
 const ListadoTareas: React.FC = () => {
   const historial = useHistory();
 
-  const [tareas, setTareas] = useState([]); // Inicialmente vacías
-  const [filtroPrioridad, setFiltroPrioridad] = useState(""); // Filtro de prioridad
-  const [filtroEstado, setFiltroEstado] = useState(""); // Filtro de estado
-  const [ordenFecha, setOrdenFecha] = useState("asc"); // Ordenar por fecha
-  const [showAlert, setShowAlert] = useState(false); // Controla la visualización de la alerta
-  const [tareaAEliminar, setTareaAEliminar] = useState<number | null>(null); // Almacena la tarea que se va a eliminar
-  const [mensajeError, setMensajeError] = useState(""); // Controla los mensajes de error
+  const [tareas, setTareas] = useState([]); 
+  const [filtroPrioridad, setFiltroPrioridad] = useState("");
+  const [filtroEstado, setFiltroEstado] = useState(""); 
+  const [ordenFecha, setOrdenFecha] = useState("asc"); 
+  const [showAlert, setShowAlert] = useState(false); 
+  const [tareaAEliminar, setTareaAEliminar] = useState<number | null>(null); 
+  const [mensajeError, setMensajeError] = useState(""); 
 
   // Función para obtener las tareas del usuario desde la API
   const obtenerTareas = async () => {
@@ -36,11 +36,11 @@ const ListadoTareas: React.FC = () => {
         `http://localhost:8080/api/tareas?prioridad=${filtroPrioridad}&hecha=${filtroEstado}&orden=${ordenFecha}`
 
       );
-      setTareas(response.data); // Guardar las tareas en el estado
-      setMensajeError(""); // Limpiar el mensaje de error si se cargan tareas correctamente
+      setTareas(response.data); 
+      setMensajeError(""); 
     } catch (error) {
       console.error("Error al obtener las tareas", error);
-      setMensajeError("Tareas no encontradas con esos filtros"); // Mostrar un mensaje de error
+      setMensajeError("Tareas no encontradas con esos filtros"); 
     }
   };
 
@@ -63,7 +63,7 @@ const ListadoTareas: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    obtenerTareas(); // Obtener las tareas cada vez que cambian los filtros
+    obtenerTareas(); 
   }, [filtroEstado, filtroPrioridad, ordenFecha]);
 
   const editarTarea = (id: number) => {
@@ -74,7 +74,7 @@ const ListadoTareas: React.FC = () => {
     try {
       await axios.delete(`http://localhost:8080/api/tareas/${id}`);
       console.log(`Tarea con id ${id} eliminada correctamente.`);
-      obtenerTareas(); // Volver a obtener las tareas actualizadas
+      obtenerTareas(); 
     } catch (error) {
       console.error("Error al eliminar la tarea", error);
     }
@@ -109,15 +109,15 @@ const ListadoTareas: React.FC = () => {
               justifyContent: "center",
             }}
           >
-            {/* Filtro de Prioridad */}
+            
             <IonItem>
               <IonLabel>Prioridad</IonLabel>
             </IonItem>
-            {/* Filtro de Estado */}
+           
             <IonItem>
               <IonLabel>Estado</IonLabel>
             </IonItem>
-            {/* Ordenar por Fecha */}
+            
             <IonItem>
               <IonLabel>Fecha</IonLabel>
             </IonItem>
@@ -129,7 +129,7 @@ const ListadoTareas: React.FC = () => {
               justifyContent: "center",
             }}
           >
-            {/* Filtro de Prioridad */}
+            
             <IonItem>
               <IonSelect
                 value={filtroPrioridad}
@@ -141,7 +141,7 @@ const ListadoTareas: React.FC = () => {
                 <IonSelectOption value="baja">Baja</IonSelectOption>
               </IonSelect>
             </IonItem>
-            {/* Filtro de Estado */}
+           
             <IonItem>
               <IonSelect
                 value={filtroEstado}
@@ -152,7 +152,7 @@ const ListadoTareas: React.FC = () => {
                 <IonSelectOption value="false">Pendiente</IonSelectOption>
               </IonSelect>
             </IonItem>
-            {/* Ordenar por Fecha */}
+           
             <IonItem>
               <IonSelect
                 value={ordenFecha}
@@ -168,7 +168,7 @@ const ListadoTareas: React.FC = () => {
 
       <IonContent className="ion-padding">
         {mensajeError ? (
-          <p>{mensajeError}</p> // Mostrar mensaje de error si falla la carga
+          <p style={{ textAlign: "center" }}>{mensajeError}</p> 
         ) : tareas.length > 0 ? (
           tareas.map((tarea) => (
             <IonCard key={tarea.id}>
@@ -202,10 +202,10 @@ const ListadoTareas: React.FC = () => {
             </IonCard>
           ))
         ) : (
-          <p>No se encontraron tareas</p> // Mostrar si no hay tareas
+          <p style={{ textAlign: "center" }}>No se encontraron tareas</p> 
         )}
 
-        {/* Alerta de confirmación */}
+       
         <IonAlert
           isOpen={showAlert}
           onDidDismiss={() => setShowAlert(false)}

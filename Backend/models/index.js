@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const dbConfig = require('../config/db.config'); // Importa tu configuración de base de datos
+const dbConfig = require('../config/db.config'); 
 
 // Crear la conexión con la base de datos MySQL
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
@@ -21,6 +21,5 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 // Importar el modelo de Tarea
-db.Tarea = require('./Tarea.js')(sequelize, Sequelize); // Cargar solo el modelo de Tarea
-
+db.Tarea = require('./Tarea.js')(sequelize, Sequelize); 
 module.exports = db;

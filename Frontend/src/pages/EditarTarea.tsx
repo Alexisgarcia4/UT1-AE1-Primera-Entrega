@@ -18,13 +18,13 @@ import axios from "axios";
 
 const EditarTarea: React.FC = () => {
   const historial = useHistory();
-  const { idTarea } = useParams<{ idTarea: string }>(); // Obtiene el idTarea de la URL
+  const { idTarea } = useParams<{ idTarea: string }>();
 
   // Estados para los campos del formulario
   const [nombre, setNombre] = useState("");
   const [mensaje, setMensaje] = useState("");
-  const [prioridad, setPrioridad] = useState("media"); // Valor predeterminado
-  const [hecha, setHecha] = useState(false); // Valor predeterminado
+  const [prioridad, setPrioridad] = useState("media");
+  const [hecha, setHecha] = useState(false);
 
   // Función para obtener los datos de la tarea desde el backend
   const obtenerTarea = async (idTarea: string) => {
@@ -33,7 +33,6 @@ const EditarTarea: React.FC = () => {
         `http://localhost:8080/api/tareas/${idTarea}`
       );
 
-      // Actualizar los campos con los valores de la tarea
       setNombre(response.data.nombre);
       setMensaje(response.data.mensaje);
       setPrioridad(response.data.prioridad);
@@ -46,9 +45,9 @@ const EditarTarea: React.FC = () => {
   // Cargar los datos de la tarea cuando el componente se monta
   useEffect(() => {
     if (idTarea) {
-      obtenerTarea(idTarea); // Llama a la función para obtener la tarea
+      obtenerTarea(idTarea);
     }
-  }, []); // Dependencia en el idTarea
+  }, []);
 
   // Función para manejar el guardado de la tarea editada
   const guardarTarea = async () => {
@@ -64,7 +63,7 @@ const EditarTarea: React.FC = () => {
         `http://localhost:8080/api/tareas/${idTarea}`,
         tareaEditada
       );
-     historial.replace("/listadotareas")
+      historial.replace("/listadotareas");
     } catch (error) {
       console.error("Error al guardar la tarea editada", error);
     }
@@ -78,11 +77,10 @@ const EditarTarea: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        {/* Formulario de edición */}
-        <IonItem >
+        <IonItem>
           <IonLabel position="floating">Nombre de la Tarea</IonLabel>
           <IonInput
-          style={{marginTop:"1.5rem"}}
+            style={{ marginTop: "1.5rem" }}
             value={nombre}
             onIonChange={(e) => setNombre(e.detail.value!)}
           />
@@ -91,7 +89,7 @@ const EditarTarea: React.FC = () => {
         <IonItem>
           <IonLabel position="floating">Mensaje (Opcional)</IonLabel>
           <IonInput
-          style={{marginTop:"1.5rem"}}
+            style={{ marginTop: "1.5rem" }}
             value={mensaje}
             onIonChange={(e) => setMensaje(e.detail.value!)}
           />

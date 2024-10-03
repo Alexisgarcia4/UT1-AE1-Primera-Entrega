@@ -2,10 +2,10 @@ import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 
-import ListadoTareas from "./pages/ListadoTareas"; // Importamos la página de tareas
-import CrearTarea from "./pages/CrearTarea"; // Importamos la nueva página
-import EditarTarea from "./pages/EditarTarea"; // Importamos la página de tareas
-import "./theme/global.css"; // Importar el archivo CSS global
+import ListadoTareas from "./pages/ListadoTareas"; 
+import CrearTarea from "./pages/CrearTarea"; 
+import EditarTarea from "./pages/EditarTarea"; 
+import "./theme/global.css"; 
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -23,12 +23,7 @@ import "@ionic/react/css/text-transformation.css";
 import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+
 import "@ionic/react/css/palettes/dark.system.css";
 
 /* Theme variables */
