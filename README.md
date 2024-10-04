@@ -67,21 +67,21 @@ la interacción con la base de datos **MySQL**, permitiendo un mapeo fluido entr
     }
   7. Inicia el servidor backend:
      ```bash
-     npm start
+     node server.js
      
   ### Frontend
   
   1. En otra terminal, navega a la carpeta del frontend:
-    ```bash
-    cd frontend
+      ```bash
+      cd frontend
 
   3. Instala las dependencias:
       ```bash
       npm install
       
   4. Inicia la aplicación Ionic:
-    ```bash
-    ionic serve
+      ```bash
+      ionic serve
 
   ### Uso
   
@@ -103,7 +103,7 @@ la interacción con la base de datos **MySQL**, permitiendo un mapeo fluido entr
     - Crea una nueva tarea.
   
   Body (ejemplo):
-    
+  
     ```json
     Copiar código
     {
@@ -112,21 +112,22 @@ la interacción con la base de datos **MySQL**, permitiendo un mapeo fluido entr
       "prioridad": "alta",
       "hecha": false
     }
-    
-  - PUT /api/tareas/
+    ```
+  - PUT /api/tareas/:id
     - Actualiza una tarea existente.
   
   Body (ejemplo):
-    
+  
     ```json
     Copiar código
-    {
-      "nombre": "Tarea actualizada",
-      "mensaje": "Mensaje actualizado",
-      "prioridad": "media",
-      "hecha": true
-    }
+      {
+        "nombre": "Tarea actualizada",
+        "mensaje": "Mensaje actualizado",
+        "prioridad": "media",
+        "hecha": true
+      }
+    ```
     
-  - DELETE /api/tareas/
+  - DELETE /api/tareas/:id
     - Elimina una tarea existente.
 
